@@ -32,7 +32,7 @@ function toDisplay(n){
   // a function to handle the repetition of the operators
   function toHandleOperators(){
     if (operators.includes(n) && operators.includes(lastChar)){
-      del();
+      del()
     }
   }
 }
