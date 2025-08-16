@@ -24,7 +24,7 @@ function toDisplay(n){
     case "/": toHandleOperators(); display.value += n; break;
     case "*": toHandleOperators(); display.value += n; break;
     case "-": toHandleOperators(); display.value += n; break;
-    case ".": toHandleOperators(); display.value += n; break;
+    case ".": toHandleOperators(); periodHandler(); break;
     case "=": toCalculate(); break;
     default : display.value = "ERROR";
   }
@@ -32,9 +32,28 @@ function toDisplay(n){
   // a function to handle the repetition of the operators
   function toHandleOperators(){
     if (operators.includes(n) && operators.includes(lastChar)){
-      del()
+      del();
     }
   }
+  // a function to handle the period
+  function periodHandler(){
+
+    const lastOperatorIndex = Math.max(
+      display.value.lastIndexOf('+'),
+      display.value.lastIndexOf('-'),
+      display.value.lastIndexOf('*'),
+      display.value.lastIndexOf('/')
+    );
+    const currentDigits = display.value.slice(lastOperatorIndex+1);
+    
+    if (currentDigits.includes('.')){
+      return
+    }
+    else{
+      display.value += n;
+    }
+  }
+
 }
 
 function clearDisplay() {
