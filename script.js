@@ -1,10 +1,10 @@
 const display = document.getElementById("display");
-const operators = ['+', '-', '.', '/', '*'];
+const operators = ['+', '-', '/', '*'];
 
 function toDisplay(n){
   let lastChar = display.value.slice(-1);
    
-  if (display.value === "ERROR"){
+  if (display.value === "ERROR" || display.value === "NaN" || display.value === "Infinity"){
     clearDisplay();
   }
   
@@ -24,7 +24,7 @@ function toDisplay(n){
     case "/": toHandleOperators(); display.value += n; break;
     case "*": toHandleOperators(); display.value += n; break;
     case "-": toHandleOperators(); display.value += n; break;
-    case ".": toHandleOperators(); periodHandler(); break;
+    case ".": periodHandler(); break;
     case "=": toCalculate(); break;
     default : display.value = "ERROR";
   }
